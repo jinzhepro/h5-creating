@@ -17,16 +17,16 @@ export default {
       top: 0,
       left: 0,
       width: 0,
-      height: 0,
+      height: 0
     }
   }),
   mutations: {
-    clearList(state){
+    clearList (state) {
       state.list = []
     },
-    updComponent(state, { component, id }) {
+    updComponent (state, { component, id }) {
       // console.log(component, '----', state.curCacheData)
-      let copyCpt = deepCopy(component)
+      const copyCpt = deepCopy(component)
       // let b = JSON.stringify(deepCopy(state.curCacheData[0] || []))
 
       if (id) {
@@ -54,7 +54,7 @@ export default {
         // state.curCacheData.unshift(a)
       }
     },
-    updata(state, count) {
+    updata (state, count) {
       state.count = count
       // console.log(state.count, '=====', state.curCacheData);
       const component = state.curCacheData[state.count] || ''
@@ -75,32 +75,32 @@ export default {
       }
       console.log(state.list, 'oo')
     },
-    setCurComponent(state, { component }) {
+    setCurComponent (state, { component }) {
       // if (state.editMode === "preview") {
       //   return state.curComponent = {}
       // }
       state.curComponent = { ...component }
     },
-    setEditMode(state, mode) {
+    setEditMode (state, mode) {
       state.editMode = mode
     },
-    saveArea(state, payload) {
+    saveArea (state, payload) {
       if (!payload) {
         state.area = {
           top: Math.min(...state.list.map(item => item.styles.top)) - 1,
           left: Math.min(...state.list.map(item => item.styles.left)) - 1,
           width: Math.max(...state.list.map(item => item.styles.left + item.styles.width)) - Math.min(...state.list.map(item => item.styles.left)),
-          height: Math.max(...state.list.map(item => item.styles.top + item.styles.height)) - Math.min(...state.list.map(item => item.styles.top)),
+          height: Math.max(...state.list.map(item => item.styles.top + item.styles.height)) - Math.min(...state.list.map(item => item.styles.top))
         }
       } else {
         state.area = {
           top: 0,
           left: 0,
           width: 0,
-          height: 0,
+          height: 0
         }
       }
-    },
+    }
     // updateComponent(state, payload) {
     //   console.log(payload);
 
@@ -121,10 +121,10 @@ export default {
     // }
   },
   actions: {
-    updCurAndLs({ commit }, { component }) {
+    updCurAndLs ({ commit }, { component }) {
       commit('setCurComponent', { component })
       commit('updComponent', { component, id: component.id })
     }
-  },
+  }
 
 }

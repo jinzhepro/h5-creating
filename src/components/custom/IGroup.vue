@@ -47,33 +47,33 @@ import { mapGetters } from 'vuex'
 import { getResizeStyle, getComponentStyle, getSelectStyle } from '../../utils/getStyles'
 export default {
   props: ['element'],
-  data() {
+  data () {
     return {
       newComponent: {},
-      nid: '',
+      nid: ''
     }
   },
   computed: {
     ...mapGetters(['curComponent', 'componentLs', 'editMode']),
-    getResizeStyle() {
+    getResizeStyle () {
       return getResizeStyle
     },
-    getComponentStyle() {
+    getComponentStyle () {
       return getComponentStyle
     },
-    getSelectStyle() {
+    getSelectStyle () {
       return getSelectStyle
     }
   },
-  created() {
+  created () {
     this.$bus.$on('nid', nid => {
       this.nid = nid
     })
   },
   methods: {
     // clean(){},
-    changeStyle(e) {
-      let obj = {}
+    changeStyle (e) {
+      const obj = {}
       if (this.editMode !== 'edit') return
       this.$bus.$emit('nid', this.element.id)
       const up = () => {
@@ -83,7 +83,7 @@ export default {
             top: item.styles.top / component.styles.height,
             left: item.styles.left / component.styles.width,
             width: item.styles.width / component.styles.width,
-            height: item.styles.height / component.styles.height,
+            height: item.styles.height / component.styles.height
           }
         })
         const newComponent = {
@@ -96,7 +96,7 @@ export default {
                 top: obj[item.id].top * e.target.offsetHeight,
                 left: obj[item.id].left * e.target.offsetWidth,
                 width: obj[item.id].width * e.target.offsetWidth,
-                height: obj[item.id].height * e.target.offsetHeight,
+                height: obj[item.id].height * e.target.offsetHeight
               }
             }
           }),
@@ -114,7 +114,7 @@ export default {
       }
       document.addEventListener('mouseup', up)
     },
-    showMenu(e) {
+    showMenu (e) {
       if (this.editMode !== 'edit') return
       this.$bus.$emit('nid', this.element.id)
       this.$store.commit('ctxMenu/showMenu', {
@@ -123,39 +123,39 @@ export default {
         type: 1
       })
     },
-    select(ev) {
+    select (ev) {
       this.nid = this.element.id
       this.$bus.$emit('nid', this.element.id)
       if (this.editMode !== 'edit') return
       ev.path.forEach(element => {
-        if (element.className == 'group') {
+        if (element.className === 'group') {
           this.oDiv = element
         }
         if (element.className === 'com-ls') {
           this.oDiv2 = element
         }
       })
-      var disX = 0;
-      var disY = 0;
-      disX = ev.clientX - this.oDiv.offsetLeft;
-      disY = ev.clientY - this.oDiv.offsetTop;
+      let disX = 0
+      let disY = 0
+      disX = ev.clientX - this.oDiv.offsetLeft
+      disY = ev.clientY - this.oDiv.offsetTop
       this.l = parseInt(this.oDiv.offsetLeft)
       this.t = parseInt(this.oDiv.offsetTop)
       const move = (ev) => {
-        this.l = ev.clientX - disX;
-        this.t = ev.clientY - disY;
-        this.oDiv.style.left = this.l + 'px';
-        this.oDiv.style.top = this.t + 'px';
+        this.l = ev.clientX - disX
+        this.t = ev.clientY - disY
+        this.oDiv.style.left = this.l + 'px'
+        this.oDiv.style.top = this.t + 'px'
       }
       const up = () => {
         this.$bus.$emit('nid', this.element.id)
-        let newComponent = this.componentLs.find(item => item.id === this.element.id)
+        const newComponent = this.componentLs.find(item => item.id === this.element.id)
         newComponent.styles = {
           ...newComponent.styles,
           left: this.l,
           top: this.t,
           height: parseInt(window.getComputedStyle(this.oDiv).height),
-          width: parseInt(window.getComputedStyle(this.oDiv).width),
+          width: parseInt(window.getComputedStyle(this.oDiv).width)
         }
         this.$store.commit('componentData/updComponent', {
           component: newComponent.id ? newComponent : this.element,
@@ -166,7 +166,7 @@ export default {
       }
       document.addEventListener('mousemove', move)
       document.addEventListener('mouseup', up)
-    },
+    }
   }
 }
 </script>

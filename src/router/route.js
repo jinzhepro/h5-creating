@@ -12,9 +12,9 @@ const routes = [
     children: [
       {
         path: '/home',
-        component:()=> import('@/views/home')
+        component: () => import('@/views/home')
       },
-       {
+      {
         path: 'edit',
         component: () => import('../layout/EditLayout.vue'),
         children: [
@@ -33,19 +33,19 @@ const routes = [
           {
             path: 'search',
             component: () => import('../views/SearchPage.vue')
-          },
-          
+          }
+
         ]
 
       }
-    ],
-    
+    ]
+
   },
 
   {
     path: '/components',
     component: () => import('../layout/HomeLayout.vue'),
-    children:[
+    children: [
       {
         path: 'ls',
         component: () => import('../views/ComponentsPage.vue')
@@ -56,15 +56,15 @@ const routes = [
     path: '/edit/system',
     component: () => import('../views/SystemPage.vue')
   },
-  
-  {                                                                 
+
+  {
     path: 'system',
     component: () => import('../views/SystemPage.vue')
   },
   {
     path: '/h5',
     component: () => import('../layout/HomeLayout.vue'),
-    children:[
+    children: [
       {
         path: 'ls',
         component: () => import('../views/H5Page.vue')
@@ -74,7 +74,7 @@ const routes = [
   {
     path: '/log',
     component: () => import('../layout/HomeLayout.vue'),
-    children:[
+    children: [
       {
         path: 'ls',
         component: () => import('../views/LogPage.vue')
@@ -84,7 +84,7 @@ const routes = [
   {
     path: '/class',
     component: () => import('../layout/HomeLayout.vue'),
-    children:[
+    children: [
       {
         path: 'ls',
         component: () => import('../views/Class.vue')
@@ -94,13 +94,13 @@ const routes = [
   {
     path: '/icon-img',
     component: () => import('../layout/HomeLayout.vue'),
-    children:[
+    children: [
       {
         path: 'ls',
         component: () => import('../views/IconImg.vue')
       }
     ]
-  },
+  }
 ]
 
 export default routes

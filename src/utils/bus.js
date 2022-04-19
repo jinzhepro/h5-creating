@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-var bus = {
+const bus = {
   install: function (V) {
     V.prototype.$bus = new Vue()
   }

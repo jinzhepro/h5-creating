@@ -36,31 +36,31 @@ import { mapGetters } from 'vuex'
 export default {
   model: {
     prop: 'show',
-    event: 'change',
+    event: 'change'
   },
   props: {
     show: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   computed: {
     ...mapGetters(['canvasStyleData', 'componentLs']),
-    getComponentStyle() {
+    getComponentStyle () {
       return getComponentStyle
     }
   },
   methods: {
-    close() {
+    close () {
       this.$emit('change', false)
     },
-    handleClick() {
+    handleClick () {
       const events = this.config.events
       Object.keys(events).forEach(event => {
         this[event](events[event])
       })
-    },
-  },
+    }
+  }
 }
 </script>
 

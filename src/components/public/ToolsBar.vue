@@ -50,41 +50,41 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex'
 export default {
-  props: ["type"],
+  props: ['type'],
   computed: {
     ...mapGetters([
-      "componentLs",
-      "area",
-      "canvasStyleData",
-      "count",
-      "curCacheData",
-    ]),
+      'componentLs',
+      'area',
+      'canvasStyleData',
+      'count',
+      'curCacheData'
+    ])
   },
-  data() {
+  data () {
     return {
-      nid: "",
-      isShowPreview: false,
-    };
+      nid: '',
+      isShowPreview: false
+    }
   },
-  created() {
-    this.$bus.$on("nid", (nid) => {
-      this.nid = nid;
-    });
+  created () {
+    this.$bus.$on('nid', (nid) => {
+      this.nid = nid
+    })
   },
   methods: {
-    group() {},
-    dialogSave() {
-      this.dialogShow = true;
+    group () {},
+    dialogSave () {
+      this.dialogShow = true
     },
-    save() {
+    save () {
       const component = {
-        type: "i-group",
+        type: 'i-group',
         label: '',
         id: new Date().getTime(),
         attr: this.componentLs.map((item) => {
-          if (item.type === "i-group") {
+          if (item.type === 'i-group') {
             return {
               ...item.attr,
               type: item.type,
@@ -94,17 +94,17 @@ export default {
                   ...n.attr,
                   type: n.type,
                   value: n.propValue,
-                  id: n.id,
-                };
-              }),
-            };
+                  id: n.id
+                }
+              })
+            }
           }
           return {
             ...item.attr,
             type: item.type,
             value: item.propValue,
-            id: item.id,
-          };
+            id: item.id
+          }
         }),
         propValue: this.componentLs.map((item) => {
           return {
@@ -112,45 +112,45 @@ export default {
             styles: {
               ...item.styles,
               top: item.styles.top - this.area.top - 1,
-              left: item.styles.left - this.area.left - 1,
-            },
-          };
+              left: item.styles.left - this.area.left - 1
+            }
+          }
         }),
         styles: {
           ...this.area,
           top: 0,
           left: 0,
-          height: this.canvasStyleData.height,
-        },
-      };
-      this.$store.commit("componentData/saveArea");
-      this.$prompt('','请输入组件名称').then(({value})=>{
+          height: this.canvasStyleData.height
+        }
+      }
+      this.$store.commit('componentData/saveArea')
+      this.$prompt('', '请输入组件名称').then(({ value }) => {
         component.label = value
         this.$store.commit('moduleData/addCustomModules', component)
-        this.$store.commit("componentData/clearList");
-        this.$store.commit("componentData/setCurComponent", { component: {} });
-        this.$store.commit("componentData/saveArea", 1);
+        this.$store.commit('componentData/clearList')
+        this.$store.commit('componentData/setCurComponent', { component: {} })
+        this.$store.commit('componentData/saveArea', 1)
         this.$message.success('添加成功')
       })
     },
-    preview() {
-      this.isShowPreview = true;
-      this.$store.commit("componentData/setEditMode", "preview");
-      this.$store.commit("componentData/setCurComponent", { component: {} });
+    preview () {
+      this.isShowPreview = true
+      this.$store.commit('componentData/setEditMode', 'preview')
+      this.$store.commit('componentData/setCurComponent', { component: {} })
     },
-    handlePreviewChange() {
-      this.$store.commit("componentData/setEditMode", "edit");
+    handlePreviewChange () {
+      this.$store.commit('componentData/setEditMode', 'edit')
     },
-    previous() {
-      this.$store.commit("componentData/updata", this.count + 1);
-      this.$bus.$emit("nid", this.nid);
+    previous () {
+      this.$store.commit('componentData/updata', this.count + 1)
+      this.$bus.$emit('nid', this.nid)
     },
-    nextStep() {
-      this.$store.commit("componentData/updata", this.count - 1);
-      this.$bus.$emit("nid", this.nid);
-    },
-  },
-};
+    nextStep () {
+      this.$store.commit('componentData/updata', this.count - 1)
+      this.$bus.$emit('nid', this.nid)
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

@@ -26,17 +26,17 @@
 
 <script>
 export default {
-  data(){
-    return{
+  data () {
+    return {
       activeIndex: '/components/ls'
     }
   },
-  methods:{
-    handleSelect(key){
+  methods: {
+    handleSelect (key) {
       this.$router.push(key)
     }
   },
-  created(){
+  created () {
     this.activeIndex = this.$route.path
   }
 }

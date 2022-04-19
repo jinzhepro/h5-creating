@@ -75,38 +75,38 @@ import { mapGetters } from 'vuex'
 import { getResizeStyle, getSelectStyle, getComponentStyle } from '../../utils/getStyles'
 export default {
   props: ['element'],
-  data() {
+  data () {
     return {
       pid: ''
     }
   },
   computed: {
     ...mapGetters(['menu', 'menuType']),
-    getSelectStyle() {
+    getSelectStyle () {
       return getSelectStyle
     },
-    getComponentStyle() {
+    getComponentStyle () {
       return getComponentStyle
     },
-    getResizeStyle() {
+    getResizeStyle () {
       return getResizeStyle
     }
   },
-  created() {
+  created () {
     this.$bus.$on('pid', pid => {
       this.pid = pid
     })
   },
   methods: {
-    showMenu(e) {
+    showMenu (e) {
       this.$store.commit('ctxMenu/showMenu', {
         left: e.offsetX,
-        top: e.offsetY,
+        top: e.offsetY
       })
       // this.$bus.$emit('move', e)
       // this.$bus.$emit('pid', this.pid)
       // this.$store.commit('moduleData/setModulePosition',{x: e.offsetX,y: e.offsetY})
-    },
+    }
     // a(e){
     //   console.log(e);
     //   this.$store.commit('ctxMenu/showMenu',{

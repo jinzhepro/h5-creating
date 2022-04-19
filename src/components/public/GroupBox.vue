@@ -7,16 +7,15 @@ import { getResizeStyle } from '../../utils/getStyles'
 export default {
   props: ['styles'],
   watch: {
-    styles() {
+    styles () {
       this.$forceUpdate()
-
     }
   },
   computed: {
-    getResizeStyle() {
+    getResizeStyle () {
       return getResizeStyle
     }
-  },
+  }
 }
 </script>
 

@@ -5,6 +5,11 @@
     <el-button @click="$router.push('/edit/system')">建造其他页面</el-button>
   </div>
 </template>
+<script>
+export default {
+  name: 'Home'
+}
+</script>
 
 <style lang="scss" scoped>
 .home{

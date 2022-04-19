@@ -14,13 +14,13 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex'
 export default {
   props: ['menu', 'menuType'],
   computed: {
     ...mapGetters(['curComponent', 'copyComponent', 'moduleLs', 'componentLs'])
   },
-  data() {
+  data () {
     return {
       type: '',
       pid: '',
@@ -28,7 +28,7 @@ export default {
       nid: ''
     }
   },
-  mounted() {
+  mounted () {
     this.type = this.$route.path.indexOf('module') > -1 ? 'module' : 'diy'
     this.$bus.$on('cid', cid => {
       this.cid = cid
@@ -41,9 +41,9 @@ export default {
     })
   },
   methods: {
-    copy() {
+    copy () {
       if (this.type === 'module') {
-        var obj = {}
+        let obj = {}
         this.moduleLs.forEach(item => {
           if (item.id === this.pid) {
             item.propValue.forEach(n => {
@@ -52,7 +52,7 @@ export default {
               }
             })
           }
-        });
+        })
         this.$store.commit('ctxMenu/addCopy', {
           component: obj
         })
@@ -64,8 +64,8 @@ export default {
       }
       this.$store.commit('ctxMenu/showMenu', { top: 0, left: 0 })
     },
-    paster() {
-      console.log(this.copyComponent);
+    paster () {
+      console.log(this.copyComponent)
       if (!this.copyComponent.id) {
         this.$message({
           type: 'error',
@@ -74,9 +74,9 @@ export default {
         return
       }
       if (this.type === 'module') {
-        console.log(this.pid, this.cid);
-        var index = this.moduleLs.findIndex(item => item.id === this.pid)
-        console.log(this.moduleLs[index].propValue.concat([{ ...this.copyComponent }]));
+        console.log(this.pid, this.cid)
+        const index = this.moduleLs.findIndex(item => item.id === this.pid)
+        console.log(this.moduleLs[index].propValue.concat([{ ...this.copyComponent }]))
         const a = {
           ...this.copyComponent,
           id: String(new Date().getTime()),
@@ -92,7 +92,7 @@ export default {
           },
           pid: this.pid
         }
-        console.log(obj);
+        console.log(obj)
 
         this.$store.commit('moduleData/updModuleLs', obj)
       } else {
@@ -108,7 +108,7 @@ export default {
       }
       this.$store.commit('ctxMenu/showMenu', { top: 0, left: 0 })
     },
-    del() {
+    del () {
       if (this.type === 'module') {
         this.$store.commit('moduleData/delModuleLs', { pid: this.pid, cid: this.cid })
       } else {
@@ -117,7 +117,7 @@ export default {
       }
       this.$store.commit('ctxMenu/showMenu', { top: 0, left: 0 })
     },
-    up() {
+    up () {
       if (this.type === 'module') {
         const module = this.moduleLs.find(item => item.id === this.pid).propValue.find(n => n.id === this.cid)
         module.styles['z-index'] = (module.styles['z-index'] || 0) + 1
@@ -129,10 +129,10 @@ export default {
       }
       this.$store.commit('ctxMenu/showMenu', { top: 0, left: 0 })
     },
-    down() {
+    down () {
       if (this.type === 'module') {
         const module = this.moduleLs.find(item => item.id === this.pid).propValue.find(n => n.id === this.cid)
-        if (module.styles['z-index'] == 0) {
+        if (module.styles['z-index'] === 0) {
           this.$message({
             type: 'error',
             message: '该图层已在最底!'
@@ -142,10 +142,9 @@ export default {
         }
         module.styles['z-index'] = (module.styles['z-index'] || 0) - 1
         this.$store.commit('moduleData/updModuleLs', { module, pid: this.pid, cid: this.cid })
-
       } else {
         const component = this.componentLs.find(item => item.id === this.nid)
-        if (component.styles['z-index'] == 0) {
+        if (component.styles['z-index'] === 0) {
           this.$message({
             type: 'error',
             message: '该图层已在最底!'

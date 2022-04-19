@@ -17,16 +17,16 @@
 import componentList from '@/custom-component/component-list'
 
 export default {
-  data() {
+  data () {
     return {
-      componentList,
+      componentList
     }
   },
   methods: {
-    handleDragStart(e) {
+    handleDragStart (e) {
       e.dataTransfer.setData('index', e.target.dataset.index)
-    },
-  },
+    }
+  }
 }
 </script>
 

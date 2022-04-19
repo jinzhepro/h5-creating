@@ -28,9 +28,9 @@ import { baseLs } from '../../utils/componentLs'
 export default {
   name: 'componentLs',
   computed: {
-    ...mapGetters(['moduleLs','curModule'])
+    ...mapGetters(['moduleLs', 'curModule'])
   },
-  data() {
+  data () {
     return {
       pid: '',
       baseLs: baseLs,
@@ -51,23 +51,23 @@ export default {
       }]
     }
   },
-  created() {
+  created () {
     this.$bus.$on('pid', pid => {
       this.pid = pid
     })
   },
   methods: {
-    dragStart(e, parmas) {
+    dragStart (e, parmas) {
       e.dataTransfer.setData('dragComponent', JSON.stringify(parmas))
     },
-    click(item) {
+    click (item) {
       console.log(item)
-      var t = String(new Date().getTime())
+      const t = String(new Date().getTime())
       const custom = {
         ...item,
         id: t
       }
-      var index = this.moduleLs.findIndex(item => item.id === this.curModule.id)
+      const index = this.moduleLs.findIndex(item => item.id === this.curModule.id)
       if (this.moduleLs[index].type === 'i-custom') {
         const obj = {
           module: {

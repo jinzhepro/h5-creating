@@ -15,10 +15,10 @@ import { mapGetters } from 'vuex'
 import { getResizeStyle } from '../../utils/getStyles'
 export default {
   props: ['element'],
-  data() {
+  data () {
     return {
       cid: '',
-      pid: '',
+      pid: ''
     }
   },
   computed: {
@@ -27,7 +27,7 @@ export default {
       return getResizeStyle
     }
   },
-  created() {
+  created () {
     this.$bus.$on('cid', cid => {
       this.cid = cid
     })
@@ -36,7 +36,7 @@ export default {
     })
   },
   methods: {
-    resize(e) {
+    resize (e) {
       const up = () => {
         const newComponent = {
           ...this.element,
@@ -51,11 +51,11 @@ export default {
       }
       document.addEventListener('mouseup', up)
     },
-    showMenu(e) {
+    showMenu (e) {
       this.$bus.$emit('pid', this.pid)
       this.$bus.$emit('cid', this.cid)
-      var top = 0
-      var left = 0
+      let top = 0
+      let left = 0
       this.moduleLs.forEach(item => {
         if (item.id === this.pid) {
           item.propValue.forEach(n => {
@@ -65,14 +65,13 @@ export default {
             }
           })
         }
-      });
+      })
       this.$store.commit('ctxMenu/showMenu', {
         top,
         left,
         type: 1
       })
-
-    },
+    }
   }
 }
 </script>

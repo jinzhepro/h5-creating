@@ -4,7 +4,7 @@ const requireComponent = require.context(
   false,
   /\.js$/
 )
-let modules = {}
+const modules = {}
 
 requireComponent.keys().forEach(fileName => {
   const moduleName = fileName.split('/').pop().replace('.js', '')

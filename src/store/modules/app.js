@@ -8,18 +8,18 @@ export default {
     }
   }),
   mutations: {
-    showMenu(state, { top, left }) {
+    showMenu (state, { top, left }) {
       state.menu = {
         top,
         left
       }
     },
-    setModel(state, payload){
+    setModel (state, payload) {
       state.model = payload
     }
   },
   actions: {
 
-  },
+  }
 
 }

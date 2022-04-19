@@ -127,170 +127,170 @@
   </div>
 </template>
 <script>
-import draggable from "vuedraggable";
+import draggable from 'vuedraggable'
 export default {
   components: {
-    draggable,
+    draggable
   },
-  data() {
+  data () {
     return {
       navIndex: 0,
       index: 0,
       navList: [
-        { label: "首页", icon: "el-icon-s-home", type: "home" },
-        { label: "我的", icon: "el-icon-user-solid", type: "mine" },
+        { label: '首页', icon: 'el-icon-s-home', type: 'home' },
+        { label: '我的', icon: 'el-icon-user-solid', type: 'mine' }
       ],
       componentLs: [
-        { label: "轮播", icon: "el-icon-picture-outline", height: 100, id: 1 },
-        { label: "广告", icon: "el-icon-bank-card", height: 300, id: 2 },
+        { label: '轮播', icon: 'el-icon-picture-outline', height: 100, id: 1 },
+        { label: '广告', icon: 'el-icon-bank-card', height: 300, id: 2 }
       ],
       home: [
         {
-          label: "头部",
+          label: '头部',
           id: 1,
           height: 60,
-          type: "home-header",
+          type: 'home-header',
           attr: {
-            title: "",
-            bg: "",
+            title: '',
+            bg: '',
             member: {
-              icon: "",
-              status: "",
-              link: "",
+              icon: '',
+              status: '',
+              link: ''
             },
             qr: {
-              icon: "",
-              status: "",
-              link: "",
+              icon: '',
+              status: '',
+              link: ''
             },
             msg: {
-              icon: "",
-              status: "",
-              link: "",
-            },
-          },
+              icon: '',
+              status: '',
+              link: ''
+            }
+          }
         },
         {
-          label: "搜索栏",
+          label: '搜索栏',
           id: 1,
-          height: 40,
+          height: 40
         },
         {
-          label: "轮播图",
+          label: '轮播图',
           id: 1,
-          height: 100,
+          height: 100
         },
         {
-          label: "导航栏",
+          label: '导航栏',
           id: 1,
-          height: 100,
+          height: 100
         },
         {
-          label: "广告位",
+          label: '广告位',
           id: 1,
-          height: 300,
-        },
+          height: 300
+        }
       ],
       mine: [
         {
-          label: "头部",
+          label: '头部',
           id: 1,
-          height: 60,
+          height: 60
         },
         {
-          label: "订单图标",
+          label: '订单图标',
           id: 1,
-          height: 40,
+          height: 40
         },
         {
-          label: "我的财富",
+          label: '我的财富',
           id: 1,
-          height: 100,
+          height: 100
         },
         {
-          label: "我的服务",
+          label: '我的服务',
           id: 1,
-          height: 100,
+          height: 100
         },
         {
-          label: "商家入驻",
+          label: '商家入驻',
           id: 1,
-          height: 300,
-        },
+          height: 300
+        }
       ],
       moduleLs: [
         {
-          label: "头部",
+          label: '头部',
           id: 1,
-          height: 60,
+          height: 60
         },
         {
-          label: "搜索栏",
+          label: '搜索栏',
           id: 1,
-          height: 40,
+          height: 40
         },
         {
-          label: "轮播图",
+          label: '轮播图',
           id: 1,
-          height: 100,
+          height: 100
         },
         {
-          label: "导航栏",
+          label: '导航栏',
           id: 1,
-          height: 100,
+          height: 100
         },
         {
-          label: "广告位",
+          label: '广告位',
           id: 1,
-          height: 300,
-        },
+          height: 300
+        }
       ],
       navBar: [
         {
-          label: "首页",
-          icon: "el-icon-s-home",
+          label: '首页',
+          icon: 'el-icon-s-home'
         },
         {
-          label: "分类",
-          icon: "el-icon-coin",
+          label: '分类',
+          icon: 'el-icon-coin'
         },
         {
-          label: "发现",
-          icon: "el-icon-thumb",
+          label: '发现',
+          icon: 'el-icon-thumb'
         },
         {
-          label: "购物车",
-          icon: "el-icon-shopping-cart-2",
+          label: '购物车',
+          icon: 'el-icon-shopping-cart-2'
         },
         {
-          label: "我的",
-          icon: "el-icon-user",
-        },
-      ],
-    };
+          label: '我的',
+          icon: 'el-icon-user'
+        }
+      ]
+    }
   },
-  created() {
-    this.moduleLs = this.home;
+  created () {
+    this.moduleLs = this.home
   },
   methods: {
-    navClick(index) {
-      this.navIndex = index;
+    navClick (index) {
+      this.navIndex = index
       if (index === 0) {
-        this.moduleLs = this.home;
+        this.moduleLs = this.home
       } else {
-        this.moduleLs = this.mine;
+        this.moduleLs = this.mine
       }
     },
-    click(index, item) {
-      this.index = index;
-      this.attrType = item.type;
+    click (index, item) {
+      this.index = index
+      this.attrType = item.type
     },
-    log(evt) {
-      window.console.log(evt);
-      this.index = evt.added ? evt.added.newIndex : evt.moved.newIndex;
-    },
-  },
-};
+    log (evt) {
+      window.console.log(evt)
+      this.index = evt.added ? evt.added.newIndex : evt.moved.newIndex
+    }
+  }
+}
 </script>
 
 <style lang="scss">
@@ -328,7 +328,7 @@ export default {
       width: 200px;
       height: 100%;
       background: #ffffff;
-      
+
       .item {
         float: left;
         width: 50px;

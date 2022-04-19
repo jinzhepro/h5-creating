@@ -25,13 +25,13 @@ export default {
     ...mapGetters(['componentLs'])
   },
   methods: {
-    drop(e) {
-      let component = JSON.parse(e.dataTransfer.getData('dragComponent'))
+    drop (e) {
+      const component = JSON.parse(e.dataTransfer.getData('dragComponent'))
       if (e.target.className === 'com-ls') {
         component.styles.left = e.offsetX
         component.styles.top = e.offsetY
       } else {
-        console.log(e);
+        console.log(e)
         component.styles.left = this.componentLs[this.componentLs.findIndex(item => item.id === (e.target.className === 'group-mask' ? e.target.id : e.target.dataset.id))].styles.left + e.offsetX
         component.styles.top = this.componentLs[this.componentLs.findIndex(item => item.id === (e.target.className === 'group-mask' ? e.target.id : e.target.dataset.id))].styles.top + e.offsetY
       }
@@ -41,9 +41,9 @@ export default {
         top: 0,
         left: 0
       })
-    },
+    }
   },
-  created() {
+  created () {
 
   }
 }

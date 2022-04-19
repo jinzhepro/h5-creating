@@ -15,16 +15,16 @@ export default {
   props: ['element'],
   computed: {
     ...mapGetters(['curComponent', 'editMode', 'componentLs']),
-    getSelectStyle() {
+    getSelectStyle () {
       return getSelectStyle
     }
   },
-  created() {
+  created () {
     this.$bus.$on('nid', nid => {
       this.nid = nid
     })
   },
-  data() {
+  data () {
     return {
       nid: '',
       flag: false,
@@ -36,51 +36,51 @@ export default {
     }
   },
   methods: {
-    select(ev) {
+    select (ev) {
       // this.$bus.$emit('nid', this.element.id)
       console.log(ev)
 
       ev.path.forEach(element => {
-        if (element.className == 'resize') {
+        if (element.className === 'resize') {
           this.oDiv = element
         }
         if (element.className === 'com-ls') {
           this.oDiv2 = element
         }
       })
-      var disX = 0;
-      var disY = 0;
-      disX = ev.clientX - this.oDiv.offsetLeft;
-      disY = ev.clientY - this.oDiv.offsetTop;
+      let disX = 0
+      let disY = 0
+      disX = ev.clientX - this.oDiv.offsetLeft
+      disY = ev.clientY - this.oDiv.offsetTop
       this.l = parseInt(this.oDiv.offsetLeft)
       this.t = parseInt(this.oDiv.offsetTop)
       const move = (ev) => {
-        this.l = ev.clientX - disX;
-        this.t = ev.clientY - disY;
-        this.oDiv.style.left = this.l + 'px';
-        this.oDiv.style.top = this.t + 'px';
-        this.$store.commit("componentData/saveArea",1)
+        this.l = ev.clientX - disX
+        this.t = ev.clientY - disY
+        this.oDiv.style.left = this.l + 'px'
+        this.oDiv.style.top = this.t + 'px'
+        this.$store.commit('componentData/saveArea', 1)
       }
       const up = () => {
         this.$bus.$emit('nid', this.element.id)
-        let newComponent = this.componentLs.find(item => item.id === this.nid)
+        const newComponent = this.componentLs.find(item => item.id === this.nid)
         newComponent.styles = {
           ...newComponent.styles,
           left: this.l,
-          top: this.t,
+          top: this.t
         }
         this.$store.commit('componentData/updComponent', {
           component: this.newComponent.id ? this.newComponent : this.element,
           id: this.element.id
         })
-        this.$store.commit('componentData/setCurComponent',{component: this.newComponent.id ? this.newComponent : this.element})
+        this.$store.commit('componentData/setCurComponent', { component: this.newComponent.id ? this.newComponent : this.element })
 
         document.removeEventListener('mousemove', move)
         document.removeEventListener('mouseup', up)
       }
       document.addEventListener('mousemove', move)
       document.addEventListener('mouseup', up)
-    },
+    }
     // select(e){
     //   if (this.editMode !== 'edit') return
     //   this.offsetX = e.offsetX

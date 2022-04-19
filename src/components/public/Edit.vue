@@ -65,26 +65,26 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex'
 import { getComponentStyle, getSelectStyle } from '../../utils/getStyles'
 export default {
-  data() {
+  data () {
     return {
 
     }
   },
   computed: {
     ...mapGetters(['canvasStyleData', 'componentLs', 'curComponent', 'area', 'menu', 'menuType']),
-    getComponentStyle() {
+    getComponentStyle () {
       return getComponentStyle
     },
-    getSelectStyle() {
+    getSelectStyle () {
       return getSelectStyle
     }
   },
   methods: {
 
-    showMenu(e) {
+    showMenu (e) {
       this.$store.commit('ctxMenu/showMenu', {
         top: e.offsetY,
         left: e.offsetX
@@ -93,14 +93,14 @@ export default {
       //   component: {}
       // })
     },
-    check() {
+    check () {
       this.$store.commit('ctxMenu/showMenu', {
         left: 0,
         top: 0,
         type: 1
       })
     },
-    reset() {
+    reset () {
       this.$store.commit('ctxMenu/showMenu', { top: 0, left: 0 })
       this.$store.commit('componentData/setCurComponent', {
         component: {}

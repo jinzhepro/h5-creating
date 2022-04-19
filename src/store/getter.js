@@ -6,7 +6,7 @@
  */
 export default {
   customModules: (state) => state.moduleData.customModules,
-  model: (state)=> state.app.model,
+  model: (state) => state.app.model,
   componentLs: (state) => state.componentData.list,
   curComponent: (state) => state.componentData.curComponent,
   curCacheData: (state) => state.componentData.curCacheData, // 自定义模块缓存数据
@@ -21,5 +21,5 @@ export default {
   moduleLs: (state) => state.moduleData.moduleLs,
   moduleX: (state) => state.moduleData.moduleX,
   moduleY: (state) => state.moduleData.moduleY,
-  setMCurComponent: (state) => state.moduleData.curComponent,
+  setMCurComponent: (state) => state.moduleData.curComponent
 }

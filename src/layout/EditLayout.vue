@@ -15,12 +15,12 @@
 
 <script>
 export default {
-  data(){
+  data () {
     return {
-      type: '',
+      type: ''
     }
   },
-  created(){
+  created () {
     this.type = this.$route.path.indexOf('dialog') > -1 ? 'dialog' : 'normal'
   }
 }

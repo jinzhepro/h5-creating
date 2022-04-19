@@ -101,38 +101,38 @@
 
 <script>
 export default {
-  data(){
+  data () {
     return {
       activeTab: '1',
       tableData: [{
-          date: '2016-05-02',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-04',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1517 弄'
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1519 弄'
-        }, {
-          date: '2016-05-03',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1516 弄'
-        }]
+        date: '2016-05-02',
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1518 弄'
+      }, {
+        date: '2016-05-04',
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1517 弄'
+      }, {
+        date: '2016-05-01',
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1519 弄'
+      }, {
+        date: '2016-05-03',
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1516 弄'
+      }]
     }
   },
-  methods:{
-    search(){
-      
+  methods: {
+    search () {
+
     },
-    add(){
-      if(this.activeTab === '1'){
+    add () {
+      if (this.activeTab === '1') {
         this.$router.push('/edit/module')
-      }else if (this.activeTab === '2'){
+      } else if (this.activeTab === '2') {
         this.$router.push('/edit/dialog')
-      }else{
+      } else {
         this.$router.push('/edit/search')
       }
     }
@@ -166,7 +166,7 @@ export default {
     .tab{
       margin: 10px 0;
     }
-    
+
     .ls{
       margin: 0 auto;
       width: 1200px;

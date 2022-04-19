@@ -11,32 +11,32 @@
   </div>
 </template>
 <script>
-import { mapGetters } from "vuex";
-import { getResizeStyle } from "../../utils/getStyles";
+import { mapGetters } from 'vuex'
+import { getResizeStyle } from '../../utils/getStyles'
 export default {
-  props: ["element"],
-  data() {
+  props: ['element'],
+  data () {
     return {
-      nid: ""
-    };
-  },
-  computed: {
-    ...mapGetters(["curComponent", "componentLs", "editMode"]),
-    getResizeStyle: function () {
-      return getResizeStyle;
+      nid: ''
     }
   },
-  created() {
-    this.$bus.$on("nid", nid => {
-      this.nid = nid;
-    });
+  computed: {
+    ...mapGetters(['curComponent', 'componentLs', 'editMode']),
+    getResizeStyle: function () {
+      return getResizeStyle
+    }
+  },
+  created () {
+    this.$bus.$on('nid', nid => {
+      this.nid = nid
+    })
   },
   methods: {
-    resize(e) {
-      this.$bus.$emit("nid", this.element.id);
-      if (this.editMode !== "edit") return;
+    resize (e) {
+      this.$bus.$emit('nid', this.element.id)
+      if (this.editMode !== 'edit') return
       const up = () => {
-        this.$bus.$emit("nid", this.element.id);
+        this.$bus.$emit('nid', this.element.id)
         const newComponent = {
           ...this.element,
           styles: {
@@ -44,18 +44,18 @@ export default {
             height: parseInt(window.getComputedStyle(e.target).height),
             width: parseInt(window.getComputedStyle(e.target).width)
           }
-        };
-        this.$store.commit("componentData/updComponent", {
+        }
+        this.$store.commit('componentData/updComponent', {
           component: newComponent,
           id: this.element.id
-        });
-        document.removeEventListener("mouseup", up)
-      };
-      document.addEventListener("mouseup", up)
+        })
+        document.removeEventListener('mouseup', up)
+      }
+      document.addEventListener('mouseup', up)
     },
-    showMenu(e) {
-      if (this.editMode !== "edit") return;
-      this.$store.commit("ctxMenu/showMenu", {
+    showMenu (e) {
+      if (this.editMode !== 'edit') return
+      this.$store.commit('ctxMenu/showMenu', {
         top: this.componentLs[
           this.componentLs.findIndex(item => item.id === this.nid)
         ].styles.top + e.offsetY,
@@ -64,10 +64,10 @@ export default {
             this.componentLs.findIndex(item => item.id === this.nid)
           ].styles.left + e.offsetX,
         type: 1
-      });
+      })
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

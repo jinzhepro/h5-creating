@@ -1,7 +1,7 @@
 export default {
   namespaced: true,
   state: () => ({
-    customModules:[],
+    customModules: [],
     curModule: {},
     moduleLs: [],
     moduleX: 0,
@@ -9,19 +9,18 @@ export default {
     setCurComponent: {}
   }),
   mutations: {
-    setCurModule(state, payload) {
+    setCurModule (state, payload) {
       state.curModule = payload
     },
-    addCustomModules(state, payload){
+    addCustomModules (state, payload) {
       state.customModules.push(payload)
     },
-    updModuleLs(state, { module, pid, cid, i }) {
+    updModuleLs (state, { module, pid, cid, i }) {
       if (!pid && !cid) {
         if (module && i !== undefined) {
           state.moduleLs.splice(i, 0, module)
         }
-        if (!module && i !== undefined)
-          state.moduleLs.splice(i, 1)
+        if (!module && i !== undefined) { state.moduleLs.splice(i, 1) }
       }
       if (cid && pid) {
         state.moduleLs = state.moduleLs.map(item => {
@@ -49,11 +48,9 @@ export default {
           }
           return item
         })
-
       }
-
     },
-    delModuleLs(state, { pid, cid }) {
+    delModuleLs (state, { pid, cid }) {
       state.moduleLs = state.moduleLs.map(item => {
         if (item.id === pid) {
           return {
@@ -64,16 +61,16 @@ export default {
         return item
       })
     },
-    setModulePosition(state, { x, y }) {
+    setModulePosition (state, { x, y }) {
       state.moduleX = x
       state.moduleY = y
     },
-    setCurComponent(state, { component }) {
+    setCurComponent (state, { component }) {
       state.curComponent = { ...component }
-    },
+    }
   },
   actions: {
 
-  },
+  }
 
 }

@@ -5,7 +5,7 @@ const modules = require.context(
   /\.vue$/
 )
 modules.keys().forEach(item => {
-  let name = item.split('/').pop().replace(/\.vue/, '')
-  let module = modules(item).default || modules(item)
+  const name = item.split('/').pop().replace(/\.vue/, '')
+  const module = modules(item).default || modules(item)
   Vue.component(name, module)
-});
+})

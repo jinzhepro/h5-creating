@@ -657,42 +657,42 @@
 <script>
 export default {
   props: ['curComponent', 'styleKeys', 'id', 'isIgroup'],
-  data() {
+  data () {
     return {
       isShow: true,
       excludes: ['Picture', 'Group'], // 这些组件不显示内容
       borderShowOptions: ['上', '下', '左', '右'],
       borderStyleOptions: [
         {
-          label: `————`,
+          label: '————',
           value: 'solid'
         },
         {
           label: '黑体',
-          value: 'dashed',
+          value: 'dashed'
         },
         {
           label: '黑体',
-          value: 'dotted',
+          value: 'dotted'
         },
         {
           label: '黑体',
-          value: 'double',
-        },
+          value: 'double'
+        }
       ],
       fontFamilyOptions: [
         {
           label: '黑体',
-          value: 'SimHei',
+          value: 'SimHei'
         },
         {
           label: '仿宋',
-          value: 'FangSong',
+          value: 'FangSong'
         },
         {
           label: '楷体',
-          value: 'KaiTi',
-        },
+          value: 'KaiTi'
+        }
       ],
       map: {
         left: '左右调整',
@@ -716,11 +716,11 @@ export default {
         borderRadius: '圆角',
         boxShadow: '阴影',
         openType: ''
-      },
+      }
     }
   },
   methods: {
-    changeStyle() {
+    changeStyle () {
       if (this.isIgroup) {
         const module = this.curComponent.propValue.find(item => item.id === this.styleKeys.id)
         this.$store.commit('moduleData/updModuleLs', {
@@ -728,7 +728,7 @@ export default {
             ...module,
             styles: {
               ...module.styles,
-              ... this.styleKeys,
+              ...this.styleKeys
             }
           },
           pid: this.id,
@@ -741,7 +741,7 @@ export default {
         })
       }
     },
-    changeWritingMode() {
+    changeWritingMode () {
       this.styleKeys.writingMode = !this.styleKeys.writingMode
       return this.changeStyle()
     }

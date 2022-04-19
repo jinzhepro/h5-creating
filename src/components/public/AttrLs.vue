@@ -68,12 +68,12 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import Attr from "./Attr.vue";
+import { mapGetters } from 'vuex'
+import Attr from './Attr.vue'
 export default {
   components: { Attr },
-  props: ["type"],
-  data() {
+  props: ['type'],
+  data () {
     return {
       isShow: true,
       isIgroup: false,
@@ -83,13 +83,13 @@ export default {
       //   attr: []
       // }],
       styleKeys: [],
-      excludes: ['Picture', 'Group'], // 这些组件不显示内容
+      excludes: ['Picture', 'Group'] // 这些组件不显示内容
     }
   },
   computed: {
-    ...mapGetters(["componentLs", "moduleLs",'model','curModule','curComponent']),
+    ...mapGetters(['componentLs', 'moduleLs', 'model', 'curModule', 'curComponent'])
   },
-  created() {
+  created () {
     // this.$bus.$on("nid", (nid) => {
     //   this.id = nid;
     //   this.isIgroup = false;
@@ -122,12 +122,12 @@ export default {
     // })
   },
   methods: {
-    changeStyle() {
-      this.$store.commit("componentData/updComponent", {
+    changeStyle () {
+      this.$store.commit('componentData/updComponent', {
         component: this.curComponent,
-        id: this.id,
-      });
-    },
+        id: this.id
+      })
+    }
     // getCidData() {
     //   if (!this.cid || !this.pid) return
     //   let pData = this.moduleLs ? this.moduleLs.find(item => item.id === this.pid) : {}

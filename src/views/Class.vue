@@ -105,7 +105,7 @@
 
 <script>
 export default {
-  data(){
+  data () {
     return {
       show: false,
       title: '新建分类',
@@ -125,23 +125,23 @@ export default {
         name: '王小虎',
         address: '上海市普陀区金沙江路 1519 弄',
         children: [{
-            id: 31,
-            date: '2016-05-01',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1519 弄'
-          }, {
-            id: 32,
-            date: '2016-05-01',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1519 弄'
+          id: 31,
+          date: '2016-05-01',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1519 弄'
+        }, {
+          id: 32,
+          date: '2016-05-01',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1519 弄'
         }]
       }]
     }
   },
-  methods:{
-    search(){
-      
-    },
+  methods: {
+    search () {
+
+    }
 
   }
 }
@@ -173,7 +173,7 @@ export default {
     .tab{
       margin: 10px 0;
     }
-    
+
     .ls{
       margin: 0 auto;
       width: 1200px;
